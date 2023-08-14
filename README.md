@@ -1,6 +1,6 @@
 # Deep-Learning-Augmentation-and-Learning-Rate
 
-Code to study data augmentation and the learning rate hyperparameter for image classificatioook n
+Code to study data augmentation and the learning rate hyperparameter for image classification.
 
 ### Summary of Notebook Outputs
 
@@ -155,3 +155,48 @@ It is also important not to underestimate the power of random search for hyperpa
 - **autokeras**: AutoML for deep learning. Developed by DATA Lab at Texas A&M University. https://pypi.org/project/autokeras/
 
 - **autogluon**: AutoML for Image, Text, and Tabular Data. https://pypi.org/project/autogluon/
+
+## Summary of Major Approaches to Hyperparameter Tuning in Machine Learning
+
+- Grid Search:
+
+--Overview: Systematically search through a predefined range of hyperparameter values.
+--Pros: Exhaustive and guaranteed to find the best parameter in the given range.
+--Cons: Computationally expensive, especially if the hyperparameter space is large.
+
+Random Search:
+
+Overview: Randomly sample hyperparameter values from a defined range or distribution.
+Pros: Less computational cost than grid search. Empirical evidence suggests it can find good hyperparameters more efficiently than grid search.
+Cons: Not exhaustive. No guarantee to find the global optimum.
+Bayesian Optimization:
+
+Overview: Uses a probabilistic model to predict which hyperparameters are likely to yield better performance. Based on previous evaluations, it decides which set of hyperparameters to try next.
+Pros: More efficient than random or grid search. Finds good hyperparameters with fewer function evaluations.
+Cons: Complexity in setting up and understanding the underlying Gaussian processes.
+Gradient-based Optimization:
+
+Overview: For some models, it's possible to compute the gradient of the performance metric with respect to hyperparameters, which allows for optimization techniques similar to those used for training.
+Pros: Direct optimization of hyperparameters.
+Cons: Not applicable to all types of models and hyperparameters.
+Evolutionary Algorithms:
+
+Overview: Inspired by the process of natural selection, this method involves generating a population of hyperparameter configurations, selecting the best ones based on performance, and producing offspring configurations for the next generation.
+Pros: Can explore a large search space and often find non-obvious solutions.
+Cons: Might require many evaluations to converge.
+Population-based Training:
+
+Overview: Start training many neural networks concurrently with random hyperparameters. Periodically stop and copy the best ones, perturbing their hyperparameters.
+Pros: Can adapt hyperparameters while training, which may speed up convergence.
+Cons: Resource-intensive.
+Hyperband:
+
+Overview: An enhancement of random search that focuses on budget allocation for evaluations. Allocates more resources to promising configurations.
+Pros: Efficient in terms of resource allocation, often leading to faster discovery of good hyperparameters.
+Cons: Relies on the assumption that configurations that perform well with a small budget will continue to perform well with a larger budget.
+Meta-learning:
+
+Overview: Use previous experiences from other datasets and tasks to predict good starting hyperparameters.
+Pros: Can significantly speed up the search process if prior knowledge is relevant.
+Cons: Requires a diverse history of tasks and results to be effective.
+Note: It's important to keep in mind that the choice of hyperparameter tuning method might depend on the specifics of the problem, available computational resources, and the size of the hyperparameter space. Additionally, while finding the optimal hyperparameters can improve model performance, it's crucial to ensure that the model doesn't overfit to the training data, which would harm its generalization to unseen data.
