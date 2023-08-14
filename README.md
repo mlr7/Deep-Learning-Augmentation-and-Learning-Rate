@@ -46,26 +46,37 @@ In the notebook we demonstrate two approaches to image data augmentation. These 
 
 - **Translation**: Shifting the image in any direction.
 
-**Scaling**: Enlarging or shrinking the image.
+- **Scaling**: Enlarging or shrinking the image.
 
-**Flipping**: Reflecting the image either horizontally or vertically.
+- **Flipping**: Reflecting the image either horizontally or vertically.
 
-**Shearing**: Skewing the image in a particular direction.
+- **Shearing**: Skewing the image in a particular direction.
 
-**Elastic Deformation**: Applying local distortions to the image.
+- **Elastic Deformation**: Applying local distortions to the image.
 
 **Photometric Transformations**: These alter the appearance, color, or brightness of the image. Examples include:
 
-Brightness Adjustment: Changing the intensity of the image pixels.
-Contrast Adjustment: Modifying the difference in intensity between the lightest and darkest regions.
-Gamma Correction: Adjusting the brightness using a non-linear function.
-Color Jittering: Randomly changing the brightness, contrast, saturation, and hue.
-Mixup and CutMix: These are advanced augmentation methods where two images are blended together. In the case of CutMix, a region from one image is "cut" and "pasted" onto another image.
+- **Brightness Adjustment**: Changing the intensity of the image pixels.
 
-Random Erasing: Randomly removing a section of the image, which can help the model to not overly rely on localized features.
+- **Contrast Adjustment**: Modifying the difference in intensity between the lightest and darkest regions.
 
+- **Gamma Correction**: Adjusting the brightness using a non-linear function.
 
+- **Color Jittering**: Randomly changing the brightness, contrast, saturation, and hue.
 
+**Mixup and CutMix**: These are advanced augmentation methods where two images are blended together. In the case of CutMix, a region from one image is "cut" and "pasted" onto another image.
+
+**Random Erasing**: Randomly removing a section of the image, which can help the model to not overly rely on localized features.
+
+There are definite limitations and considerations to keep in mind when deploying data augmentation strategies in computer vision:
+
+**Not Always Appropriate**: Some augmentations might not make sense for certain datasets. For example, vertical flipping might not be suitable for digit recognition as a flipped "6" can resemble a "9".
+
+**Computational Overhead**: On-the-fly augmentation can introduce additional computation during training, potentially slowing down the training process.
+
+**No Substitute for Real Data**: While augmentation can improve model performance on limited datasets, it's no substitute for genuine, diverse data, especially if certain variations or conditions are not represented in the original dataset.
+
+Data augmentation can be a crucial strategy for training robust deep learning models, particularly when faced with limited data. Data augmentation, whether performed on-the-fly or pre-computed, artificially introduces variability, ensuring that the model is exposed to a wide range of potential scenarios it might encounter in the real world.
 
 
 ### Learning Rate Hyperparameter in Deep Learning
