@@ -36,6 +36,38 @@ In the notebook we demonstrate two approaches to image data augmentation. These 
 
 **Pre-computed Augmentation**: Transformations are applied to the entire dataset in advance, and the augmented images are saved to disk. The model then trains on this expanded dataset.
 
+
+
+**Summary of Data Augmentation Techniques for Image Data**:
+
+**Geometric Transformations**: These transformations alter the spatial arrangement of pixels in the image. Examples include:
+
+- **Rotation**: Turning the image around its center.
+
+- **Translation**: Shifting the image in any direction.
+
+**Scaling**: Enlarging or shrinking the image.
+
+**Flipping**: Reflecting the image either horizontally or vertically.
+
+**Shearing**: Skewing the image in a particular direction.
+
+**Elastic Deformation**: Applying local distortions to the image.
+
+**Photometric Transformations**: These alter the appearance, color, or brightness of the image. Examples include:
+
+Brightness Adjustment: Changing the intensity of the image pixels.
+Contrast Adjustment: Modifying the difference in intensity between the lightest and darkest regions.
+Gamma Correction: Adjusting the brightness using a non-linear function.
+Color Jittering: Randomly changing the brightness, contrast, saturation, and hue.
+Mixup and CutMix: These are advanced augmentation methods where two images are blended together. In the case of CutMix, a region from one image is "cut" and "pasted" onto another image.
+
+Random Erasing: Randomly removing a section of the image, which can help the model to not overly rely on localized features.
+
+
+
+
+
 ### Learning Rate Hyperparameter in Deep Learning
 
 **Learning rate** is one of the most critical hyperparameters in the training of deep learning models, including the example here of training deep convolutional neural networks (CNNs) for image classification. The learning rate determines how much the model should adjust its weights in response to the calculated gradient from the loss function.
@@ -52,3 +84,9 @@ Local Minima & Saddle Points: A slightly higher learning rate can sometimes help
 **Generalization and Overfitting**: Very high learning rates can prevent a model from converging, which could result in underfitting.Very low learning rates, especially if not reduced over time, can cause the model to overfit, as the model might start fitting to the noise in the training data after already capturing the main patterns. 
 
 **Learning Rate Schedules**: In practice, using a fixed learning rate throughout training may not be optimal. Adaptive learning rate schedules, like learning rate annealing, step decay, or using algorithms like Adam which adaptively adjust the learning rate, can help in converging faster and reaching better local optima.
+
+**Warmup**: Some modern training approaches start with a smaller learning rate and then "warm up" to a larger learning rate in the initial epochs. This approach can stabilize training in the initial phases.
+
+**Impact of Batch Normalization**: If you're using batch normalization layers in a CNN, they can somewhat mitigate the effects of the learning rate, as they tend to stabilize the activations, making the model a bit more robust to variations in learning rate.
+
+When training a CNN for image classification, it is good practice to experiment with different learning rates and potentially use learning rate schedules or adaptive learning rate methods. Monitoring the training and validation loss and accuracy give strong insights into whether the learning rate is too high, too low, or optimal for a give model and dataset.
