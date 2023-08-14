@@ -161,7 +161,9 @@ It is also important not to underestimate the power of random search for hyperpa
 **Grid Search**:
 
 -Overview: Systematically search through a predefined range of hyperparameter values.
+
 -Pros: Exhaustive and guaranteed to find the best parameter in the given range.
+
 -Cons: Computationally expensive, especially if the hyperparameter space is large.
 
 Random Search:
