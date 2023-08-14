@@ -101,3 +101,57 @@ Local Minima & Saddle Points: A slightly higher learning rate can sometimes help
 **Impact of Batch Normalization**: If you're using batch normalization layers in a CNN, they can somewhat mitigate the effects of the learning rate, as they tend to stabilize the activations, making the model a bit more robust to variations in learning rate.
 
 When training a CNN for image classification, it is good practice to experiment with different learning rates and potentially use learning rate schedules or adaptive learning rate methods. Monitoring the training and validation loss and accuracy give strong insights into whether the learning rate is too high, too low, or optimal for a give model and dataset.
+
+## Other Resources
+
+There are many interesting and useful hyperparameter tuning libraries available as Python packages. Some noteworthy resources to look into include:
+
+- **scikeras**: Scikit-Learn API wrapper for Keras. https://pypi.org/project/scikeras/
+
+- **Tensorflow wrapper**: tf.keras.wrappers.scikit_learn
+
+- **scikit-optimize (skopt)**: Sequential model-based optimization toolbox. A popular approach from skopt is BayesSearchCVhttps://pypi.org/project/scikit-optimize/
+
+**Bayesian optimization** is a global optimization technique tailored for optimizing complex and potentially noisy functions that are costly to evaluate. The primary idea behind Bayesian optimization is to treat the objective function as a random function and put a prior over it. After evaluating the function at some points, we update our beliefs using Bayes' theorem, which gives us a posterior distribution over functions. Using this posterior, we can determine the next point to evaluate the objective function, such that we balance exploration (sampling in regions where the uncertainty is high) with exploitation (sampling in regions where the expected value is low).
+
+**BayesSearchCV** from Scikit-Optimize (SKOPT) is a tool that integrates Bayesian optimization with cross-validated hyperparameter search over a specified parameter space. Here's a brief overview of its concepts and algorithm:
+
+**Gaussian Process (GP)**: One of the popular surrogate models used in Bayesian optimization. A GP models the function as a distribution over functions. After observing some data points, the GP updates its beliefs (in the form of mean and variance) about this distribution.
+
+**Acquisition Function**: Once we have our surrogate model, we need a way to decide where to sample next. The acquisition function calculates the utility of sampling each point in the input space. Common acquisition functions include Expected Improvement (EI), Probability of Improvement (PI), and Gaussian Process Upper Confidence Bound (GP-UCB). The point that maximizes the acquisition function is chosen as the next point to evaluate.
+
+**Summary of BayesSearchCV Algorithm as Implemented in the Scikit-Optimize library**:
+
+- Define the parameter space for hyperparameters.
+
+- Randomly select some initial points and evaluate them using cross-validation.
+
+- Fit the Gaussian Process on the evaluated points.
+
+- Calculate the acquisition function over the parameter space using the GP model.
+
+- Select the point that maximizes the acquisition function and evaluate it.
+
+- Update the GP with the new point.
+
+- Repeat steps 3-6 until a stopping criterion is met (like a maximum number of evaluations).
+
+**Tree-structured Parzen Estimator (TPE)**: Though GP is the default model in BayesSearchCV, SKOPT also provides support for other models like TPE. TPE is a non-parametric approach that models the probability of improvement based on observed samples.
+
+**Handling Categorical Variables**: One challenge in hyperparameter optimization is that the parameter space can be a mix of continuous, ordinal, and categorical variables. BayesSearchCV uses a one-hot encoding scheme internally to handle categorical variables and optimize them in the continuous latent space.
+
+**Parallelization**: Since evaluating the objective function (which, in the case of BayesSearchCV, is the cross-validated performance of a model with a given hyperparameter setting) can be computationally expensive, the tool allows for parallel evaluations using joblib's parallelization capabilities.
+
+BayesSearchCV offers a more systematic approach to hyperparameter optimization compared to traditional methods like **grid search** and **random search**. By building a probabilistic model of the objective function and updating it with new data, Bayesian optimization can efficiently explore the hyperparameter space and find better settings with fewer evaluations.
+
+It is also important not to underestimate the power of random search for hyperparameter optimization in machine learning. Though simple, in some situations (ref google cloud hyperparam-optimization with high-dimensional data) random search should be favored over grid search and Bayesian optimization approaches.
+
+(grid search, Bayesian, random search, hyperband)
+
+- **optuna**: A hyperparameter optimization framework. https://pypi.org/project/optuna/
+
+- **keras-tuner**: A Hyperparameter Tuning Library for Keras. https://pypi.org/project/keras-tuner/
+
+- **autokeras**: AutoML for deep learning. Developed by DATA Lab at Texas A&M University. https://pypi.org/project/autokeras/
+
+- **autogluon**: AutoML for Image, Text, and Tabular Data. https://pypi.org/project/autogluon/
