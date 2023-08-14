@@ -1,9 +1,22 @@
 # Deep-Learning-Augmentation-and-Learning-Rate
-Code to study data augmentation and the learning rate hyperparameter for image classification
+
+Code to study data augmentation and the learning rate hyperparameter for image classificatioook n
+
+### Summary of Notebook Outputs
+
+These outputs below are generated in the included Jupyter Notebookusing Python, Tensorflow/Keras, and Scikit-Learn, along with supporting libraries (e.g., Numpy).
 
 ![](img/galaxy_orig.png)
 
 ![](img/galaxy_augmentation1.png)
+
+![](img/CNN_Architecture.png)
+
+![](img/training_curve_params1.png)
+
+![](img/training_curve_params_compare.png)
+
+![](img/cnn_eval_confusion_matrix.png)
 
 ### Data Augmentation in Computer Vision
 
