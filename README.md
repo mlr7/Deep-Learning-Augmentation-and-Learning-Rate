@@ -158,11 +158,11 @@ It is also important not to underestimate the power of random search for hyperpa
 
 ## Summary of Major Approaches to Hyperparameter Tuning in Machine Learning
 
-- Grid Search:
+**Grid Search**:
 
---Overview: Systematically search through a predefined range of hyperparameter values.
---Pros: Exhaustive and guaranteed to find the best parameter in the given range.
---Cons: Computationally expensive, especially if the hyperparameter space is large.
+-Overview: Systematically search through a predefined range of hyperparameter values.
+-Pros: Exhaustive and guaranteed to find the best parameter in the given range.
+-Cons: Computationally expensive, especially if the hyperparameter space is large.
 
 Random Search:
 
